@@ -77,9 +77,8 @@ def login_user(request):
 # Create a `logout_request` view to handle sign out request
 @csrf_exempt
 def logout_user(request):
-    username = request.user.username if request.user.is_authenticated else ""
     logout(request)
-    return JsonResponse({"userName": username, "status": "Logged out"})
+    return JsonResponse({"userName": ""})
 
 # Create a `registration` view to handle sign up request
 @csrf_exempt
@@ -173,3 +172,47 @@ def get_cars(request):
             "CarModel": car.name
         })
     return JsonResponse({"CarModels": cars_list})
+
+
+# fetchDealers endpoint - returns plain list of dealers (no wrapper)
+def fetch_dealerships(request, state=None):
+    dealers = load_dealerships()
+    if state and state != "All":
+        dealers = [d for d in dealers if d.get('state') == state]
+    # Map lat/long to latitude/longitude for correct output
+    result = []
+    for d in dealers:
+        result.append({
+            "id": d.get("id"),
+            "city": d.get("city"),
+            "state": d.get("state"),
+            "address": d.get("address"),
+            "zip": d.get("zip"),
+            "latitude": d.get("lat"),
+            "longitude": d.get("long"),
+            "short_name": d.get("short_name"),
+            "full_name": d.get("full_name"),
+        })
+    return JsonResponse(result, safe=False)
+
+
+
+# fetchReviews endpoint - returns reviews without sentiment field
+def fetch_dealer_reviews(request, dealer_id):
+    reviews = load_reviews()
+    dealer_reviews = []
+    for r in reviews:
+        if r.get('dealership') == dealer_id or str(r.get('dealership')) == str(dealer_id):
+            review_out = {
+                "id": r.get("id"),
+                "name": r.get("name"),
+                "dealership": r.get("dealership"),
+                "review": r.get("review"),
+                "purchase": r.get("purchase"),
+                "purchase_date": r.get("purchase_date"),
+                "car_make": r.get("car_make"),
+                "car_model": r.get("car_model"),
+                "car_year": r.get("car_year")
+            }
+            dealer_reviews.append(review_out)
+    return JsonResponse(dealer_reviews, safe=False)

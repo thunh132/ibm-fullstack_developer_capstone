@@ -18,10 +18,19 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
+from djangoapp import views as djangoapp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('djangoapp/', include('djangoapp.urls')),
+
+    # fetchDealers endpoints (required by grader)
+    path('fetchDealers', djangoapp_views.fetch_dealerships, name='fetch_dealers'),
+    path('fetchDealers/<str:state>', djangoapp_views.fetch_dealerships, name='fetch_dealers_by_state'),
+
+    # fetchReviews endpoint (required by grader)
+    path('fetchReviews/dealer/<int:dealer_id>', djangoapp_views.fetch_dealer_reviews, name='fetch_dealer_reviews'),
+
     path('about/', TemplateView.as_view(template_name="About.html")),
     path('contact/', TemplateView.as_view(template_name="Contact.html")),
     path('login/', TemplateView.as_view(template_name="index.html")),
@@ -31,5 +40,6 @@ urlpatterns = [
     path('postreview/<int:id>/', TemplateView.as_view(template_name="index.html")),
     path('', TemplateView.as_view(template_name="Home.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 

@@ -1,0 +1,23 @@
+[
+  {"model": "djangoapp.carmake", "pk": 1, "fields": {"name": "Toyota", "description": "Japanese automobile manufacturer"}},
+  {"model": "djangoapp.carmake", "pk": 2, "fields": {"name": "Ford", "description": "American automobile manufacturer"}},
+  {"model": "djangoapp.carmake", "pk": 3, "fields": {"name": "Honda", "description": "Japanese automobile manufacturer"}},
+  {"model": "djangoapp.carmake", "pk": 4, "fields": {"name": "BMW", "description": "German automobile manufacturer"}},
+  {"model": "djangoapp.carmake", "pk": 5, "fields": {"name": "Chevrolet", "description": "American automobile manufacturer"}},
+
+  {"model": "djangoapp.carmodel", "pk": 1,  "fields": {"car_make": 1, "name": "Camry",    "type": "SEDAN", "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 2,  "fields": {"car_make": 1, "name": "RAV4",     "type": "SUV",   "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 3,  "fields": {"car_make": 1, "name": "Corolla",  "type": "SEDAN", "year": 2022}},
+  {"model": "djangoapp.carmodel", "pk": 4,  "fields": {"car_make": 2, "name": "Mustang",  "type": "COUPE", "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 5,  "fields": {"car_make": 2, "name": "Explorer", "type": "SUV",   "year": 2022}},
+  {"model": "djangoapp.carmodel", "pk": 6,  "fields": {"car_make": 2, "name": "F-150",    "type": "WAGON", "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 7,  "fields": {"car_make": 3, "name": "Civic",    "type": "SEDAN", "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 8,  "fields": {"car_make": 3, "name": "Accord",   "type": "SEDAN", "year": 2022}},
+  {"model": "djangoapp.carmodel", "pk": 9,  "fields": {"car_make": 3, "name": "CR-V",     "type": "SUV",   "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 10, "fields": {"car_make": 4, "name": "3 Series",  "type": "SEDAN", "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 11, "fields": {"car_make": 4, "name": "X5",        "type": "SUV",   "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 12, "fields": {"car_make": 4, "name": "5 Series",  "type": "SEDAN", "year": 2022}},
+  {"model": "djangoapp.carmodel", "pk": 13, "fields": {"car_make": 5, "name": "Malibu",    "type": "SEDAN", "year": 2022}},
+  {"model": "djangoapp.carmodel", "pk": 14, "fields": {"car_make": 5, "name": "Tahoe",     "type": "SUV",   "year": 2023}},
+  {"model": "djangoapp.carmodel", "pk": 15, "fields": {"car_make": 5, "name": "Equinox",   "type": "SUV",   "year": 2023}}
+]
